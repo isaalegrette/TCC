@@ -15,7 +15,7 @@ public class RelatorioController {
 
     @GetMapping("/{id}")
     public Relatorio getRelatorioById(@PathVariable int id) throws Exception {
-        return relatorioService.findById(id).orElseThrow(() -> new Exception("aaaaaaaaa teste teste"));
+        return relatorioService.findById(id).orElseThrow(() -> new Exception("Não existe relatório com o ID inserido"));
     }
 
     @GetMapping("/all")
