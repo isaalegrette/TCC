@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Service
 public class RelatorioService {
-
     @Autowired
     private RelatorioRepo relatorioRepo;
 
