@@ -20,11 +20,11 @@ public class Resposta {
    private int valor;
 
    @JoinColumn(name = "fk_Submetricas_sub_id")
-   //ver a cardinalidade
+   @ManyToOne
    private Submetrica submetrica;
 
    @JoinColumn(name = "fk_Relatorios_rel_id")
-   //ver a cardinalidade
+   @ManyToOne
    private Relatorio relatorio;
 
 }

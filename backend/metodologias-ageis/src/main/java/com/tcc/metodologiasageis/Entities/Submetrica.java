@@ -20,7 +20,7 @@ public class Submetrica {
     private String descricao;
 
     @JoinColumn(name = "fk_Metricas_met_id")
-    @ManyToOne //confirmar essa parte
+    @ManyToOne
     private Metrica metrica;
 
 }
