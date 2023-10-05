@@ -20,4 +20,8 @@ public class MetricaService {
     public List<Metrica> findAll() {
         return metricaRepo.findAll();
     }
+
+    public Optional<Metrica> findBySigla(String sigla) {
+        return metricaRepo.findBySigla(sigla);
+    }
 }

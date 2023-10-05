@@ -19,7 +19,7 @@ public class SubmetricaController {
 
     @GetMapping("/{id}")
     public Submetrica getSubmetricaById(@PathVariable int id) {
-        return submetricaService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Não existe submetrica com o ID inserido"));
+        return submetricaService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Não existe submétrica com o ID inserido"));
     }
 
     @GetMapping("/all")

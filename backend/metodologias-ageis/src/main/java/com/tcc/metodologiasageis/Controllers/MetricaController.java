@@ -26,4 +26,9 @@ public class MetricaController {
     public List<Metrica> getAllMetricas() {
         return metricaService.findAll();
     }
+
+    @GetMapping("/sigla/{s}")
+    public Metrica getMetricaBySigla(@PathVariable String s) {
+        return metricaService.findBySigla(s).orElseThrow(() -> new ResourceNotFoundException("Não existe métrica com a sigla inserida"));
+    }
 }

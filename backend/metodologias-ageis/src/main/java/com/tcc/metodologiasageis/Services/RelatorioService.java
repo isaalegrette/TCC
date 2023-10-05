@@ -20,4 +20,8 @@ public class RelatorioService {
     public List<Relatorio> findAll() {
         return relatorioRepo.findAll();
     }
+
+    public Optional<Relatorio> findBySigla(String sigla) {
+        return relatorioRepo.findBySigla(sigla);
+    }
 }
