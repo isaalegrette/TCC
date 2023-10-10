@@ -1,5 +1,6 @@
 package com.tcc.metodologiasageis.Services;
 
+import com.tcc.metodologiasageis.Entities.Metrica;
 import com.tcc.metodologiasageis.Entities.Submetrica;
 import com.tcc.metodologiasageis.Repositories.SubmetricaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class SubmetricaService {
 
     public Optional<Submetrica> findById(int id) {
         return submetricaRepo.findById(id);
+    }
+
+    public List<Submetrica> findByMetrica(Metrica metrica) {
+        return submetricaRepo.findByMetrica(metrica);
     }
 
     public List<Submetrica> findAll() {

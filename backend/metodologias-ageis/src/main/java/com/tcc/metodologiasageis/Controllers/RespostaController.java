@@ -1,5 +1,6 @@
 package com.tcc.metodologiasageis.Controllers;
 
+import com.tcc.metodologiasageis.Entities.Relatorio;
 import com.tcc.metodologiasageis.Entities.Resposta;
 import com.tcc.metodologiasageis.Services.RespostaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,23 @@ public class RespostaController {
         return respostaService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Não existe resposta com o ID inserido"));
     }
 
+    @GetMapping("/relatorio/{r}")
+    public List<Resposta> getRespostaByRelatorio(@PathVariable Relatorio r) {
+        return respostaService.findByRelatorio(r);
+    }
+
+    @GetMapping("/relatorio/{r}/metrica/{m}")
+    public List<Resposta> getRespostaByRelatorioAndMetrica(@PathVariable int r, @PathVariable int m) {
+        return respostaService.findByRelatorioAndMetrica(r, m);
+    }
+
     @GetMapping("/all")
     public List<Resposta> getAllRespostas() {
         return respostaService.findAll();
     }
 
-    //TODO: fazer um get resposta a partir das outras entidades
+   @GetMapping("/all-complete")
+    public List<Resposta> getAllCompleteInfoRespostas() {
+        return respostaService.findAllCompleteInfos();
+   }
 }

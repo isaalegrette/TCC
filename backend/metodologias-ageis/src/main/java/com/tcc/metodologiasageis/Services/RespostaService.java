@@ -1,5 +1,6 @@
 package com.tcc.metodologiasageis.Services;
 
+import com.tcc.metodologiasageis.Entities.Relatorio;
 import com.tcc.metodologiasageis.Entities.Resposta;
 import com.tcc.metodologiasageis.Repositories.RespostaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,19 @@ public class RespostaService {
         return respostaRepo.findById(id);
     }
 
+    public List<Resposta> findByRelatorio(Relatorio relatorio) {
+        return respostaRepo.findByRelatorio(relatorio);
+    }
+
+    public List<Resposta> findByRelatorioAndMetrica(int relatorio, int metrica) {
+        return respostaRepo.findByRelatorioAndMetrica(relatorio, metrica);
+    }
+
     public List<Resposta> findAll() {
         return respostaRepo.findAll();
+    }
+
+    public List<Resposta> findAllCompleteInfos() {
+        return respostaRepo.findAllCompleteInfos();
     }
 }
