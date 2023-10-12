@@ -1,12 +1,16 @@
-import './App.scss'
-import { Button } from '@carbon/react';
+import { Content, Heading } from '@carbon/react';
+import './App.scss';
+import AppHeader from './components/AppHeader';
 
 function App() {
   return (
     <>
-      <Button>TESTE</Button>
+      <AppHeader />
+      <Content>
+        <Heading>teste</Heading>
+      </Content>
     </>
   )
 }
 
-export default App
+export default App;
