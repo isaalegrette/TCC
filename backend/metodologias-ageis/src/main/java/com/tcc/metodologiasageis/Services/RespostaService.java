@@ -22,6 +22,10 @@ public class RespostaService {
         return respostaRepo.findByRelatorio(relatorio);
     }
 
+    public List<Resposta> findByMetrica(int metrica) {
+        return respostaRepo.findByMetrica(metrica);
+    }
+
     public List<Resposta> findByRelatorioAndMetrica(int relatorio, int metrica) {
         return respostaRepo.findByRelatorioAndMetrica(relatorio, metrica);
     }

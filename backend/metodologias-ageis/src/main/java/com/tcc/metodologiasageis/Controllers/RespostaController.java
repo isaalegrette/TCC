@@ -26,6 +26,11 @@ public class RespostaController {
         return respostaService.findByRelatorio(r);
     }
 
+    @GetMapping("/metrica/{m}")
+    public List<Resposta> getRespostaByMetrica(@PathVariable int m) {
+        return respostaService.findByMetrica(m);
+    }
+
     @GetMapping("/relatorio/{r}/metrica/{m}")
     public List<Resposta> getRespostaByRelatorioAndMetrica(@PathVariable int r, @PathVariable int m) {
         return respostaService.findByRelatorioAndMetrica(r, m);
