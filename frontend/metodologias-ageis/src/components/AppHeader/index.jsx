@@ -3,7 +3,7 @@ import { Header, HeaderName } from '@carbon/react';
 const AppHeader = () => {
     return (
         <Header>
-            <HeaderName prefix=''>Metodologias Ágeis</HeaderName>
+            <HeaderName prefix='[TCC]'>Agilizando</HeaderName>
         </Header>
     )
 };

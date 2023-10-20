@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import AnswersTable from '../AnswersTable';
 import AnswersByYearLineChart from '../Charts/AnswersByYearLineChart';
 
-const ChartsPanel = ({ selectedValue, selectedValues }) => {
+const ChartsPanel = ({ selectedValue, selectedMultiValues }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [chartData, setChartData] = useState([]);
@@ -16,21 +16,17 @@ const ChartsPanel = ({ selectedValue, selectedValues }) => {
         api
             .get(`/resposta/metrica/${selectedValue.id}`)
             .then(response => {
-                console.log(response.data);
-                console.log(selectedValues);
-
                 const data = response.data;
                 setFilteredData(data.filter(item => {
-                    for (let i = 0; i < selectedValues.length; i++) {
-                        if (selectedValues[i].id == item.relatorio.id) {
+                    for (let i = 0; i < selectedMultiValues.length; i++) {
+                        if (selectedMultiValues[i].id == item.relatorio.id) {
                             return true;
                         }
                     }
                     return false;
                 }));
-                console.log(filteredData);
-                setChartData(filteredData);
 
+                setChartData(filteredData);
                 setLoading(false);
             })
             .catch(e => setError(true));
@@ -38,7 +34,7 @@ const ChartsPanel = ({ selectedValue, selectedValues }) => {
 
     useEffect(() => {
         getChartData();
-    }, [selectedValue, selectedValues]);
+    }, [selectedValue, selectedMultiValues]);
 
     return (
         <div className='chartsPanel'>
@@ -66,10 +62,10 @@ export default ChartsPanel;
 
 ChartsPanel.propTypes = {
     selectedValue: PropTypes.object,
-    selectedValues: PropTypes.array
+    selectedMultiValues: PropTypes.array
 }
 
 ChartsPanel.defaultProps = {
     selectedValue: {},
-    selectedValues: []
+    selectedMultiValues: []
 }
