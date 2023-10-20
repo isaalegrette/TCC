@@ -1,5 +1,5 @@
 export const formatTableData = (data) => {
-    const formattedData = []
+    const formattedData = [];
     data.map((data, key) => {
         formattedData.push(
             {
@@ -10,6 +10,21 @@ export const formatTableData = (data) => {
             }
         )
     });
-    // console.log(formattedData);
+
+    return formattedData;
+};
+
+export const formatChartData = (data) => {
+    const formattedData = [];
+    data.map(data => {
+        formattedData.push(
+            {
+                group: data.submetrica.descricao,
+                key: data.relatorio.sigla,
+                value: data.valor
+            }
+        )
+    });
+
     return formattedData;
 };

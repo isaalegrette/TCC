@@ -28,9 +28,12 @@ const FilterSection = ({ sectionTitle, apiInfo, selectedValue, setSelectedValue 
         <div>
             <hr className='divider'></hr>
             <h5 className='sectionTitle'>{sectionTitle}</h5>
-            {loading && <DropdownSkeleton />}
+            {loading ? 
+                <DropdownSkeleton /> : 
+                <Dropdown id={`filter-${apiInfo}`} label='Selecione uma Métrica' items={filterOptions} itemToString={item => item ? `${item.sigla}: ${item.breveDescricao}` : ''} onChange={item => setSelectedValue(item.selectedItem)}/>
+            }
             {error && <InlineNotification lowContrast hideCloseButton kind='error'title='Erro!' subtitle='Não foi possível carregar os dados'/>}
-            <Dropdown id={`filter-${apiInfo}`} label='' items={filterOptions} itemToString={item => item ? `${item.sigla}: ${item.breveDescricao}` : ''} onChange={item => setSelectedValue(item.selectedItem)}/>
+            
         </div>
     )
 };
