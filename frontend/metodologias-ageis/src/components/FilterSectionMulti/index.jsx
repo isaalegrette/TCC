@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import api from '../../services/api';
 import { useEffect, useState } from 'react';
-import { Dropdown, DropdownSkeleton, InlineNotification } from "@carbon/react";
+import { MultiSelect, SelectSkeleton, InlineNotification } from "@carbon/react";
 import './style.scss'
 
-const FilterSection = ({ sectionTitle, apiInfo, sectionPlaceholder, selectedValue, setSelectedValue }) => {
+const FilterSectionMulti = ({ sectionTitle, apiInfo, sectionPlaceholder, selectedValues, setSelectedValues }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [filterOptions, setFilterOptions] = useState([]);
@@ -15,6 +15,7 @@ const FilterSection = ({ sectionTitle, apiInfo, sectionPlaceholder, selectedValu
             .get(`/${apiInfo}/all`)
             .then(response => {
                 setFilterOptions(response.data);
+                setSelectedValues(response.data);
                 setLoading(false);
             })
             .catch(e => setError(true));
@@ -29,29 +30,29 @@ const FilterSection = ({ sectionTitle, apiInfo, sectionPlaceholder, selectedValu
             <hr className='divider'></hr>
             <h5 className='sectionTitle'>{sectionTitle}</h5>
             {loading ? 
-                <DropdownSkeleton /> : 
-                <Dropdown id={`filter-${apiInfo}`} label={sectionPlaceholder} items={filterOptions} itemToString={item => item ? `${item.sigla}: ${item.breveDescricao}` : ''} onChange={item => setSelectedValue(item.selectedItem)}/>
+                <SelectSkeleton /> : 
+                <MultiSelect id={`filter-${apiInfo}`} label={sectionPlaceholder} items={filterOptions} initialSelectedItems={filterOptions} itemToString={item => item ? `${item.sigla}` : ''} onChange={items => setSelectedValues(items.selectedItems)}  />
             }
             {error && <InlineNotification lowContrast hideCloseButton kind='error'title='Erro!' subtitle='Não foi possível carregar os dados'/>}
-            
+             
         </div>
     )
 };
 
-export default FilterSection;
+export default FilterSectionMulti;
 
-FilterSection.propTypes = {
+FilterSectionMulti.propTypes = {
     sectionTitle: PropTypes.string,
     apiInfo: PropTypes.string,
     sectionPlaceholder: PropTypes.string,
-    selectedValue: PropTypes.object,
-    setSelectedValue: PropTypes.func
+    selectedValues: PropTypes.array,
+    setSelectedValues: PropTypes.func
 };
 
-FilterSection.defaultProps = {
+FilterSectionMulti.defaultProps = {
     sectionTitle: '',
     apiInfo: '',
     sectionPlaceholder: '',
-    selectedValue: {},
-    setSelectedValue: () => {}
+    selectedValues: [],
+    setSelectedValues: () => {}
 };
