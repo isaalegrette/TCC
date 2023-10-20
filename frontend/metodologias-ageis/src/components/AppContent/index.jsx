@@ -8,11 +8,10 @@ const AppContent = () => {
 
     return(
         <Grid condensed fullWidth className="grid">
-            <Column sm={2} md={4} lg={4} className="column">
+            <Column sm={2} md={2} lg={4} className="column">
                 <FilterPanel selectedFilterValue={selectedFilterValue} setSelectedFilterValue={setSelectedFilterValue} />
             </Column>
-            <Column lg={12}>
-                {/* <h2>{selectedFilterValue.sigla} - {selectedFilterValue.descricao}</h2> */}
+            <Column sm={2} md={6} lg={12}>
                 <ChartsPanel selectedValue={selectedFilterValue} />
             </Column>
         </Grid>
