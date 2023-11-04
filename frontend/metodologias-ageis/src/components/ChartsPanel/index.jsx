@@ -4,6 +4,7 @@ import './style.scss'
 import { useEffect, useState } from 'react';
 import AnswersTable from '../AnswersTable';
 import AnswersByYearLineChart from '../Charts/AnswersByYearLineChart';
+import WelcomeSection from '../WelcomeSection';
 
 const ChartsPanel = ({ selectedValue, selectedMultiValues }) => {
     const [loading, setLoading] = useState(false);
@@ -38,7 +39,7 @@ const ChartsPanel = ({ selectedValue, selectedMultiValues }) => {
 
     return (
         <div className='chartsPanel'>
-            {Object.keys(selectedValue).length === 0 && <p></p>}
+            {Object.keys(selectedValue).length === 0 && <WelcomeSection/>}
             {Object.keys(selectedValue).length !== 0
                 &&
                 <>
